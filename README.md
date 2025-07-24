@@ -26,7 +26,7 @@ This repository hosts the code for my personal portfolio website, meticulously c
   * CSS3 (Custom, responsive styling)  
   * JavaScript (for interactive elements like typing effects, confetti, and navigation)  
   * Font Awesome (for a rich set of icons)  
-* **Deployment**: (Add your deployment platform here, e.g., Heroku, Vercel, AWS, DigitalOcean, etc.)
+
 
 ## **📁 Project Structure**
 
@@ -66,60 +66,60 @@ Wanna run this locally? Here's how to get it rollin':
 ---
 
 ### 1. Clone the repository  
-\`\`\`bash  
+```bash  
 git clone https://github.com/Amit-Bhandari0/portfolio.git  
 cd portfolio  
-\`\`\`
+```
 
 ---
 
 ### 2. Create a virtual environment  
-\`\`\`bash  
+```bash  
 python -m venv venv  
-\`\`\`
+```
 
 ---
 
 ### 3. Activate the virtual environment  
 
 **Windows:**  
-\`\`\`bash  
+```bash  
 venv\Scripts\activate  
-\`\`\`
+````
 
 **macOS/Linux:**  
-\`\`\`bash  
+```bash  
 source venv/bin/activate  
-\`\`\`
+```
 
 ---
 
 ### 4. Install dependencies  
-\`\`\`bash  
+```bash  
 pip install -r requirements.txt  
-\`\`\`
+```
 
 ---
 
 ### 5. Apply database migrations  
-\`\`\`bash  
+```bash  
 python manage.py migrate  
-\`\`\`
+```
 
 ---
 
 ### 6. (Optional) Create a superuser for admin access  
-\`\`\`bash  
+```bash  
 python manage.py createsuperuser  
-\`\`\`  
+```
 *Follow the prompts for username, email, and password.*
 
 ---
 
 ### 7. Run the development server  
-\`\`\`bash  
+```bash  
 python manage.py runserver  
-\`\`\`
+```
 
 Then open your browser and go to:  
 👉 http://127.0.0.1:8000

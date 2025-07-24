@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const roles = [
             "AI/ML Engineer",
             "Python Developer",
-            "Django Developer",
+            "BackEnd Developer",
             
         ];
 
