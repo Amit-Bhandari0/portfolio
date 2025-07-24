@@ -1,0 +1,115 @@
+{% load static %}
+<div class="container">
+  <div class="section-title">
+    <h2>My Projects</h2>
+  </div>
+  <div class="projects-container">
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Project 1: Snake Game -->
+      <article class="project-card">
+        <div class="project-media">
+          <img
+            src="{% static 'images/snake.jpg' %}"
+            alt="Snake Game screenshot"
+            loading="lazy"
+          />
+        </div>
+        <div class="project-info">
+          <h3>Snake Game</h3>
+          <p>
+            A fun snake game made with Pygame that’s easy to play, colorful, and
+            packed with cool challenges.
+          </p>
+
+          <div class="project-links">
+            <a
+              href="https://github.com/Amit-Bhandari0/snake-game"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Snake Game source code"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i> Code
+            </a>
+            <a
+              href="{% url 'snake_docs' %}"
+              class="docs-link"
+              aria-label="2D Racing Game documentation"
+            >
+              <i class="fas fa-book" aria-hidden="true"></i> Docs
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: Space Invaders -->
+      <article class="project-card">
+        <div class="project-media">
+          <img
+            src="{% static 'images/space.png' %}"
+            alt="Space Invaders game screenshot"
+            loading="lazy"
+          />
+        </div>
+        <div class="project-info">
+          <h3>Space Invaders</h3>
+          <p>
+            Classic Space Invaders recreated in Python with intense waves, epic
+            boss battles, and awesome power-ups.
+          </p>
+          <div class="project-links">
+            <a
+              href="https://github.com/Amit-Bhandari0/Space-Invaders"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Space Invaders source code"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i> Code
+            </a>
+            <a
+              href="{% url 'space_docs' %}"
+              class="docs-link"
+              aria-label="Space Invaders documentation"
+            >
+              <i class="fas fa-book" aria-hidden="true"></i> Docs
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3: Flappy Bird -->
+      <article class="project-card">
+        <div class="project-media">
+          <img
+            src="{% static 'images/flappy.jpg' %}"
+            alt="Flappy Bird game screenshot"
+            loading="lazy"
+          />
+        </div>
+        <div class="project-info">
+          <h3>Flappy Bird</h3>
+          <p>
+            Flappy Bird in Python with smooth controls, vibrant visuals, and
+            addictive gameplay that keeps you coming back.
+          </p>
+          <div class="project-links">
+            <a
+              href="https://github.com/Amit-Bhandari0/flappy-bird"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Flappy Bird source code"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i> Code
+            </a>
+            <a
+              href="{% url 'flappy_docs' %}"
+              class="docs-link"
+              aria-label="Flappy Bird documentation"
+            >
+              <i class="fas fa-book" aria-hidden="true"></i> Docs
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

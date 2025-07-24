@@ -1,0 +1,243 @@
+/* about.css - Responsive About section styles */
+#about {
+  background-color: var(--light);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--dark);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-img {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.about-img:hover {
+  transform: translateY(-10px);
+}
+
+.about-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease-in-out;
+}
+
+.about-img:hover img {
+  transform: scale(1.05);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.skills {
+  margin-top: 2rem;
+}
+
+.skills h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-tag {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
+}
+
+
+/* Tablet landscape optimization (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .about-content {
+    gap: 2rem;
+  }
+
+  .about-text h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablet and mini-tablet portrait (768px - 991px) */
+@media (max-width: 991px) {
+  .about-content {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .about-img,
+  .about-text {
+    width: 100%;
+  }
+
+  .section-title {
+    margin-bottom: 3rem;
+  }
+}
+
+/* Mini-tablet landscape (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+  .about-content {
+    gap: 2rem;
+  }
+
+  .skill-tags {
+    gap: 0.7rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile devices (480px - 599px) */
+@media (max-width: 599px) {
+  .section-title {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-content {
+    gap: 2rem;
+  }
+
+  .skill-tags {
+    gap: 0.6rem;
+  }
+
+  .skill-tag {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* Small mobile devices (below 480px) */
+@media (max-width: 479px) {
+  .section-title {
+    margin-bottom: 2rem;
+  }
+
+  .section-title h2::after {
+    width: 60px;
+    bottom: -8px;
+  }
+
+  .about-content {
+    gap: 1.8rem;
+  }
+
+  .about-text p {
+    margin-bottom: 1.2rem;
+  }
+
+  .skills {
+    margin-top: 1.5rem;
+  }
+
+  .skill-tags {
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Extra large desktops (1600px+) */
+@media (min-width: 1600px) {
+  .about-content {
+    gap: 5rem;
+  }
+
+  .about-img {
+    border-radius: 30px;
+  }
+
+  .about-text h3 {
+    font-size: 1.8rem;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+  }
+
+  .skill-tag {
+    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
+  }
+}
+
+/* Super large desktops (2000px+) */
+@media (min-width: 2000px) {
+  .about-content {
+    gap: 7rem;
+  }
+
+  .about-text h3 {
+    font-size: 2.2rem;
+  }
+
+  .about-text p {
+    font-size: 1.2rem;
+  }
+
+  .skills h4 {
+    font-size: 1.5rem;
+  }
+}

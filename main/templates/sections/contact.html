@@ -1,0 +1,151 @@
+{% load static %}
+<!-- Enhanced Contact Section -->
+<div class="container">
+  <div class="section-title">
+    <h2>Get In Touch</h2>
+  </div>
+
+  <div class="contact-container">
+    <!-- Contact Information Section -->
+    <div class="contact-info">
+      <h3>Let's Talk About Your Project</h3>
+      <div class="contact-details">
+        <div class="contact-item" data-type="email">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <a href="mailto:amit00bhandari@gmail.com"
+              >amit00bhandari@gmail.com</a
+            >
+          </div>
+        </div>
+
+        <div class="contact-item" data-type="phone">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Phone</h4>
+            <a href="tel:+9779820956228">+977 9820956228</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Location</h4>
+            <p>Bharatpur, Nepal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="contact-form">
+      <!-- Success Message with Confetti -->
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div id="success-message" class="form-message success">
+          <div class="message-content">
+            <div class="icon-container">
+              <svg
+                class="checkmark"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 52 52"
+              >
+                <circle
+                  class="checkmark-circle"
+                  cx="26"
+                  cy="26"
+                  r="25"
+                  fill="none"
+                />
+                <path
+                  class="checkmark-check"
+                  fill="none"
+                  d="M14.1 27.2l7.1 7.2 16.7-16.8"
+                />
+              </svg>
+            </div>
+            <div class="message-text">
+              <h4>Message Sent!</h4>
+              <p>I'll get back to you soon!</p>
+            </div>
+          </div>
+          <div class="confetti-container">
+            {% if not request.user_agent.is_mobile %}
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            {% endif %}
+          </div>
+        </div>
+        {% elif message.tags == 'error' %}
+        <div class="alert alert-danger">
+          {{ message }}
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      <!-- Contact Form -->
+      <form method="post" action="{% url 'contact' %}#contact">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_name">Name</label>
+          {{ form.name }} 
+          {% if form.name.errors %}
+          <div class="error">{{ form.name.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          {{ form.email }} 
+          {% if form.email.errors %}
+          <div class="error">{{ form.email.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_subject">Subject</label>
+          {{ form.subject }} 
+          {% if form.subject.errors %}
+          <div class="error">{{ form.subject.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label for="id_message">Message</label>
+          {{ form.message }} 
+          {% if form.message.errors %}
+          <div class="error">{{ form.message.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="form-button-group">
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <svg
+              class="send-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

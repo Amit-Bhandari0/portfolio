@@ -1,0 +1,77 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<div class="doc-container">
+  <div class="doc-header">
+    <h2>Space Invaders Documentation</h2>
+    <div>
+      <button class="back-btn" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </button>
+    </div>
+  </div>
+  <div class="doc-content">
+    <div class="project-intro">
+      <p>
+        This Space Invaders game is a faithful remake of the classic arcade shooter, built using Pygame. It features smooth player controls, multiple enemy waves, dynamic enemy movement, and classic sound effects for an authentic retro experience.
+      </p>
+    </div>
+
+    <h3>Game Screenshots</h3>
+    <div class="image-container">
+      <img 
+        src="{% static 'images/space_demo.webp' %}" 
+        alt="Space Invaders Game Screenshot"
+        loading="lazy"
+      >
+      <div class="image-caption">Gameplay screenshot showing the player ship and enemy waves</div>
+    </div>
+
+    <h3>Key Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4><i class="fas fa-space-shuttle"></i> Classic Enemy Waves</h4>
+        <p>Two enemy types moving side-to-side and down the screen in formation</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-bolt"></i> Player Shooting</h4>
+        <p>Shoot bullets with cooldown and laser sound effects</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-heart"></i> Player Lives & Game Over</h4>
+        <p>Three lives with game over screen and restart option</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-bullseye"></i> Collision & Scoring</h4>
+        <p>Bullet-enemy collision triggers explosions, enemy death, and score increment</p>
+      </div>
+    </div>
+
+    <h3>Game Mechanics</h3>
+    <p>
+      The player controls a spaceship moving horizontally along the bottom of the screen, firing bullets to eliminate incoming alien enemies. Enemies move as a group, shifting direction when hitting screen edges and descending closer to the player over time.
+    </p>
+    
+    <p>
+      When an enemy is hit, it triggers a falling animation line and explosion sound, adding visual feedback. The player has three lives and loses one if an enemy collides with the ship or its falling line touches the player. The game restarts once all lives are lost.
+    </p>
+
+    <h3>Technical Implementation</h3>
+    <p>The game utilizes the following systems:</p>
+    <ul>
+      <li><strong>Sprite rendering</strong> for player, enemies, bullets, and UI</li>
+      <li><strong>Enemy group movement</strong> with direction reversal and descent on edge collision</li>
+      <li><strong>Bullet management</strong> with cooldown timer and collision detection</li>
+      <li><strong>Audio</strong> with looping background music and event sounds (laser, explosion, game over)</li>
+      <li><strong>Simple UI</strong> with start menu, play/quit buttons, score, and lives display</li>
+    </ul>
+    
+    <p>
+      The game loop manages event handling, state transitions (menu, playing, game over), and rendering at a consistent 60 FPS for smooth gameplay.
+    </p>
+  </div>
+</div>
+{% endblock %} 
+{% block footer %} 
+
+{% endblock %}

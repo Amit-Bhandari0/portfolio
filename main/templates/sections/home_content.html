@@ -1,0 +1,92 @@
+<!-- home_content.html -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-content">
+      <h1>
+        <span class="greeting">Hi, I'm</span>
+        <span class="name-title">Amit Bhandari</span>
+        <div class="typing-container" aria-live="polite">
+          <span class="typing-text" id="typing-text">Game Developer</span>
+        </div>
+      </h1>
+      <p class="hero-description">
+        Crafting intelligent, data-driven applications with Python and machine
+        learning. Passionate about building scalable systems that solve
+        real-world problems.
+      </p>
+
+      <div class="hero-btns">
+        <a
+          href="{% url 'projects' %}"
+          class="btn btn-primary"
+          aria-label="View my projects"
+        >
+          View My Projects <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="{% url 'contact' %}" class="btn btn-outline" aria-label="Contact me">
+          Contact Me <i class="fas fa-paper-plane" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="social-icons">
+        <a
+          href="https://github.com/Amit-Bhandari0"
+          target="_blank"
+          class="github"
+          aria-label="GitHub profile"
+        >
+          <i class="fab fa-github" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/amit-bhandari-15a6b2339"
+          target="_blank"
+          class="linkedin"
+          aria-label="LinkedIn profile"
+        >
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/amit_bhandari19/"
+          target="_blank"
+          class="instagram"
+          aria-label="Instagram profile"
+        >
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <div class="robot-container" id="robot-container">
+        <div class="robot">
+          <div class="robot-head">
+            <div class="robot-face">
+              <div class="robot-eyes">
+                <div class="robot-eye"><div class="pupil"></div></div>
+                <div class="robot-eye"><div class="pupil"></div></div>
+              </div>
+              <div class="robot-mouth"></div>
+            </div>
+          </div>
+          <div class="robot-body">
+            <div class="robot-core"></div>
+          </div>
+          <div class="robot-arm arm-left">
+            <div class="arm-upper"></div>
+            <div class="arm-lower"></div>
+          </div>
+          <div class="robot-arm arm-right">
+            <div class="arm-upper"></div>
+            <div class="arm-lower"></div>
+          </div>
+          <div class="robot-leg leg-left">
+            <div class="leg-upper"></div>
+            <div class="leg-lower"></div>
+          </div>
+          <div class="robot-leg leg-right">
+            <div class="leg-upper"></div>
+            <div class="leg-lower"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

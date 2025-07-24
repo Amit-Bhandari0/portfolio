@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Amit Bhandari – AI/ML & Backend Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Amit Bhandari - AI/ML Developer and Backend Engineer with expertise in Python, Django, and machine learning projects."
+    />
+    <meta
+      name="keywords"
+      content="AI developer, ML engineer, backend developer, python developer, django, portfolio, Amit Bhandari"
+    />
+    <meta name="author" content="Amit Bhandari" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Amit Bhandari – AI/ML & Backend Developer"
+    />
+    <meta
+      property="og:description"
+      content="Explore AI/ML and backend projects built with Python and Django by Amit Bhandari."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amit-bhandari.com.np" />
+    <meta property="og:image" content="{% static 'images/og_image.png' %}" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://amit-bhandari.com.np" />
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="any"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'images/apple_icon.png' %}"
+    />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{% static 'css/base.css' %}" as="style" />
+    <link rel="preload" href="{% static 'js/script.js' %}" as="script" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/about.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/projects.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/contact.css' %}"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/docs.css' %}" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Smooth scrolling and section offset -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-margin-top: 80px;
+      }
+
+      /* Responsive font scaling */
+      :root {
+        --font-scale: 1;
+      }
+
+      /* Large desktop screens */
+      @media (min-width: 1600px) {
+        :root {
+          --font-scale: 1.1;
+        }
+      }
+
+      /* Extra large screens */
+      @media (min-width: 2000px) {
+        :root {
+          --font-scale: 1.2;
+        }
+      }
+
+      /* Apply font scaling */
+      body {
+        font-size: calc(1rem * var(--font-scale));
+      }
+
+      /* Tablet landscape optimization */
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .container {
+          padding: 0 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo-container">
+        <img
+          src="{% static 'images/logo.webp' %}"
+          alt="Amit Bhandari Logo"
+          class="logo-img"
+        />
+        <a href="/" class="logo" id="home-link">Amit Bhandari</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link">About</a></li>
+        <li><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+        <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="menu-btn" aria-label="Toggle navigation menu">
+        <span class="bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </nav>
+
+    {% block content %}{% endblock %} {% block footer %}
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>Amit Bhandari</h3>
+            <p>Building intelligent systems that turn data into insights.</p>
+            <div class="footer-social">
+              <a
+                href="https://github.com/Amit-Bhandari0"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="github"
+                aria-label="GitHub profile"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/amit-bhandari-15a6b2339"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="linkedin"
+                aria-label="LinkedIn profile"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/amit_bhandari19/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="instagram"
+                aria-label="Instagram profile"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+              <a href="/" class="footer-nav-link"
+                ><i class="fas fa-home"></i> Home</a
+              >
+              <a href="{% url 'about' %}" class="footer-nav-link"
+                ><i class="fas fa-user"></i> About</a
+              >
+              <a href="{% url 'projects' %}" class="footer-nav-link"
+                ><i class="fas fa-code"></i> Projects</a
+              >
+              <a href="{% url 'contact' %}" class="footer-nav-link"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Info</h3>
+            <div class="footer-links">
+              <a href="mailto:amit00bhandari@gmail.com" class="footer-nav-link">
+                <i class="fas fa-envelope"></i> amit00bhandari@gmail.com
+              </a>
+              <a href="tel:+9779820956228" class="footer-nav-link">
+                <i class="fas fa-phone-alt"></i> +977 9820956228
+              </a>
+              <div class="footer-nav-link location-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Bharatpur, Nepal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">© 2025 Amit Bhandari. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    {% endblock %}
+
+    <!-- Main Script -->
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

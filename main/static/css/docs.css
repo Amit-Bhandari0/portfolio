@@ -1,0 +1,276 @@
+/* Updated docs.css - Responsive Documentation Pages */
+.documentation-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--light);
+  display: none;
+  z-index: 2000;
+  overflow-y: auto;
+  padding: clamp(2rem, 6vw, 6rem) clamp(1rem, 3vw, 1.5rem);
+}
+
+body.docs-open {
+  overflow: hidden;
+}
+
+.doc-container {
+  max-width: min(1200px, 90vw);
+  margin: 0 auto;
+  background: white;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.doc-header h2 {
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  flex: 1;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.back-btn {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  z-index: 10;
+  width: 100%;
+  max-width: 220px;
+  text-align: center;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.back-btn i {
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--dark));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+}
+
+.back-btn:hover i {
+  transform: translateX(-5px);
+}
+
+.doc-content {
+  line-height: 1.6;
+}
+
+.doc-content h3 {
+  color: var(--dark);
+  margin: clamp(1.2rem, 3vw, 1.5rem) 0 clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+}
+
+.doc-content p {
+  margin-bottom: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Responsive Image Container */
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: clamp(1.5rem, 4vw, 2rem) auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.02);
+}
+
+/* Caption styling */
+.image-caption {
+  text-align: center;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: #666;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Project introduction styling */
+.project-intro {
+  background: rgba(108, 99, 255, 0.05);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border-radius: 10px;
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  border-left: 4px solid var(--primary);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+}
+
+/* Feature grid layout */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  margin: clamp(1.2rem, 3vw, 1.5rem) 0;
+}
+
+/* Feature card styling */
+.feature-card {
+  background: white;
+  border-radius: 10px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h4 {
+  color: var(--primary);
+  margin-bottom: clamp(0.6rem, 1.5vw, 0.8rem);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+.feature-card h4 i {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+.feature-card p {
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  margin-bottom: 0;
+}
+
+.doc-content ul {
+  padding-left: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.doc-content li {
+  margin-bottom: 0.6rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* ====================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ====================== */
+
+/* Tablet landscape (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .doc-header {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .back-btn {
+    margin-top: 0;
+  }
+}
+
+/* Tablet portrait (768px - 991px) */
+@media (max-width: 991px) {
+  .doc-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .back-btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+
+  .doc-header h2 {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Mobile devices (480px - 599px) */
+@media (max-width: 599px) {
+  .image-container {
+    margin: 1rem auto;
+  }
+}
+
+/* Small mobile devices (below 480px) */
+@media (max-width: 479px) {
+  .doc-container {
+    padding: 1.2rem;
+  }
+}
+
+/* Large desktops (1600px+) */
+@media (min-width: 1600px) {
+  .doc-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .doc-content p {
+    font-size: 1.1rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+  }
+
+  .feature-card h4 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Extra large desktops (2000px+) */
+@media (min-width: 2000px) {
+  .doc-container {
+    padding: 3rem;
+    max-width: 1400px;
+  }
+
+  .doc-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .back-btn {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    max-width: 260px;
+  }
+
+  .feature-grid {
+    gap: 2rem;
+  }
+}

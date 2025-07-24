@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<!-- All sections in one page -->
+<section id="home" class="page-section">
+  {% include "sections/home_content.html" %}
+</section>
+<section id="about" class="page-section">
+  {% include "sections/about.html" %}
+</section>
+<section id="projects" class="page-section">
+  {% include "sections/projects.html" %}
+</section>
+<section id="contact" class="page-section">
+  {% include "sections/contact.html" %}
+</section>
+
+<script>
+  // Ensure correct section is shown on initial load
+  document.addEventListener("DOMContentLoaded", function () {
+    const pathToSection = {
+      "/": "home",
+      "/about/": "about",
+      "/projects/": "projects",
+      "/contact/": "contact",
+    };
+
+    const currentPath = window.location.pathname;
+    const sectionId = pathToSection[currentPath] || "home";
+
+    if (sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const navbar = document.querySelector(".navbar");
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        window.scrollTo({
+          top: section.offsetTop - navbarHeight,
+          behavior: "instant",
+        });
+      }
+    }
+  });
+</script>
+{% endblock %}

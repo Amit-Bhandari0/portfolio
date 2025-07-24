@@ -1,0 +1,78 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<div class="doc-container">
+  <div class="doc-header">
+    <h2>Snake Game Documentation</h2>
+    <div>
+      <button class="back-btn" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </button>
+    </div>
+  </div>
+  <div class="doc-content">
+    <div class="project-intro">
+      <p>
+        This Snake Game is a modern twist on the classic arcade favorite. Developed using Pygame, it offers smooth gameplay, clean visuals, sound effects, and intuitive controls. Whether you're chasing high scores or just vibing with the retro aesthetic, this game hits the mark.
+      </p>
+    </div>
+
+    <h3>Game Screenshots</h3>
+    <div class="image-container">
+      <img 
+        src="{% static 'images/snake_demo.webp' %}" 
+        alt="Snake Game Screenshot"
+        loading="lazy"
+      >
+      <div class="image-caption">Gameplay screenshot showing the snake and food grid</div>
+    </div>
+
+    <h3>Game Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4><i class="fas fa-gamepad"></i> Classic Snake Logic</h4>
+        <p>Grid-based movement with tail-growing mechanics and self-collision detection</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-volume-up"></i> Sound Effects</h4>
+        <p>Includes collect and game-over sound effects for better feedback</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-pause"></i> Pause System</h4>
+        <p>Press <strong>Space</strong> anytime to pause/resume the game</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-bars"></i> Start & Game Over Screens</h4>
+        <p>Interactive buttons for starting the game and restarting after game over</p>
+      </div>
+    </div>
+
+    <h3>Game Design Philosophy</h3>
+    <p>
+      The game design sticks to a minimalistic style to retain the charm of the original Snake, while adding modern polish with UI elements, smoother animations, and sound design. The clean background and color contrast ensure easy tracking of the snake and food even during longer runs.
+    </p>
+    
+    <p>
+      The game is built to be accessible — the controls are simple (arrow keys), and the difficulty increases naturally as the snake gets longer. The screen wraps around grid edges, giving more room for movement, but self-collision keeps the challenge alive.
+    </p>
+
+    <h3>Technical Implementation</h3>
+    <p>The game was implemented using the following core systems:</p>
+    <ul>
+      <li><strong>Grid-based movement</strong> using modular arithmetic for wrap-around</li>
+      <li><strong>Collision detection</strong> for both food and self segments</li>
+      <li><strong>Button system</strong> for start menu and game over interactions</li>
+      <li><strong>Dynamic difficulty</strong> with increasing snake speed</li>
+      <li><strong>Sound integration</strong> via Pygame mixer</li>
+    </ul>
+    
+    <p>
+      The game logic is designed around clean OOP principles — `Snake`, `Food`, and `Button` classes handle their own states and rendering. The use of a centralized `game_loop()` ensures everything updates at a consistent frame rate, with proper event handling and state transitions.
+    </p>
+  </div>
+</div>
+{% endblock %} 
+
+{% block footer %} 
+
+{% endblock %}

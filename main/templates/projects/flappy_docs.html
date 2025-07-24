@@ -1,0 +1,102 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="doc-container">
+  <div class="doc-header">
+    <h2>Flappy Bird Documentation</h2>
+    <div>
+      <button class="back-btn" onclick="window.history.back()">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </button>
+    </div>
+  </div>
+  <div class="doc-content">
+    <div class="project-intro">
+      <p>
+        This Flappy Bird clone captures the addictive charm of the original with
+        smooth animations, responsive controls, and classic pixel-art style
+        graphics. Built with Pygame, it features randomized pipe gaps and an
+        intuitive pause system for a polished gameplay experience.
+      </p>
+    </div>
+
+    <h3>Game Screenshots</h3>
+    <div class="image-container">
+      <img
+        src="{% static 'images/flappy_demo.webp' %}"
+        alt="Flappy Bird Gameplay Screenshot"
+        loading="lazy"
+      />
+      <div class="image-caption">
+        Screenshot showing the bird, pipes, and scrolling background
+      </div>
+    </div>
+
+    <h3>Game Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4><i class="fas fa-bird"></i> Animated Bird Sprites</h4>
+        <p>
+          Three-frame bird flap animation with smooth rotation based on movement
+        </p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-columns"></i> Dynamic Pipes</h4>
+        <p>
+          Randomly generated pipe pairs with vertical gaps and smooth leftward
+          scrolling
+        </p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-pause"></i> Pause Functionality</h4>
+        <p>Pause and resume gameplay with the P key</p>
+      </div>
+      <div class="feature-card">
+        <h4><i class="fas fa-trophy"></i> Score Tracking</h4>
+        <p>
+          Score increases each time the bird passes through pipe pairs, with
+          sound feedback
+        </p>
+      </div>
+    </div>
+
+    <h3>Game Design Philosophy</h3>
+    <p>
+      The focus was on creating a faithful remake of the classic game that feels
+      familiar yet smooth. Random pipe gaps keep gameplay unpredictable, while
+      the gentle gravity and precise controls give players a fair challenge. The
+      pixel-perfect collision detection maintains the nostalgic feel.
+    </p>
+
+    <p>
+      Sound effects and visual feedback, like bird wing flaps and scoring
+      points, enhance player engagement. The pause feature allows casual players
+      to take breaks without losing progress.
+    </p>
+
+    <h3>Technical Implementation</h3>
+    <p>The game was built with these key systems:</p>
+    <ul>
+      <li><strong>Event-driven pipe spawning</strong> using Pygame timers</li>
+      <li>
+        <strong>Gravity and velocity</strong> based bird movement with rotation
+      </li>
+      <li>
+        <strong>Pixel-perfect collision detection</strong> between bird and
+        pipes or ground
+      </li>
+      <li>
+        <strong>Animated sprites</strong> cycling through frames for bird
+        flapping
+      </li>
+      <li>
+        <strong>Sound integration</strong> for points, wing flap, and death
+      </li>
+    </ul>
+
+    <p>
+      The code is organized to separate game states (start, playing, game over),
+      handling UI buttons, and rendering all assets efficiently. Timers and
+      event loops manage game pace and animations smoothly.
+    </p>
+  </div>
+</div>
+{% endblock %} {% block footer %} {% endblock %}
