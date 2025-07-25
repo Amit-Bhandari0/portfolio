@@ -32,7 +32,7 @@ This repository hosts the code for my personal portfolio website, meticulously c
 
 The project adheres to a well-organized Django project structure, with distinct applications managing specific functionalities.
 
-.  
+```bash
 ├── my\_portfolio/             \# Django project root  
 │   ├── settings.py           \# Project settings  
 │   ├── urls.py               \# Project URL configurations  
@@ -58,6 +58,7 @@ The project adheres to a well-organized Django project structure, with distinct 
 ├── requirements.txt          \# Python dependency list  
 ├── LICENSE                   \# Project license file  
 └── README.md                 \# This comprehensive documentation file
+```
 
 ## ⚙️ Setup and Installation
 
