@@ -68,7 +68,7 @@
 .typing-container {
   display: block;
   margin: 0.1rem 0;
-  height: 1.2em;
+  height: 1.5em;
   position: relative;
   overflow: hidden;
 }
@@ -84,9 +84,10 @@
   padding-right: 15px;
   animation: fadeIn 0.6s ease-out 0.2s forwards;
   opacity: 0;
-  line-height: 1.1;
+  line-height: 1.3;
   letter-spacing: 1px;
   margin-top: 0.5rem;
+  white-space: nowrap;
 }
 
 .typing-text::after {
@@ -446,14 +447,14 @@
 
 .arm-left {
   top: 130px;
-  left: 25%;
+  left: 27%;
   transform-origin: top center;
   animation: arm-swing-left 2s infinite alternate;
 }
 
 .arm-right {
   top: 130px;
-  left: 75%;
+  left: 67%;
   transform-origin: top center;
   animation: arm-swing-right 2s infinite alternate;
 }
@@ -484,14 +485,14 @@
 
 .leg-left {
   top: 240px;
-  left: 40%;
+  left: 35%;
   transform-origin: top center;
   animation: leg-move-left 2s infinite alternate;
 }
 
 .leg-right {
   top: 240px;
-  left: 60%;
+  left: 58%;
   transform-origin: top center;
   animation: leg-move-right 2s infinite alternate;
 }
@@ -755,23 +756,23 @@
 
   .leg-left,
   .leg-right {
-    top: 230px;
+    top: 240px;
   }
 
   .arm-left {
-    left: 25%;
+    left: 21%;
   }
 
   .arm-right {
-    left: 75%;
+    left: 70%;
   }
 
   .leg-left {
-    left: 35%;
+    left: 32%;
   }
 
   .leg-right {
-    left: 65%;
+    left: 58%;
   }
 
   /* Limb size adjustments */

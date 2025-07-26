@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!typingText) return;
 
         const roles = [
-            "AI/ML Engineer",
+            "AI/ML Developer",
             "Python Developer",
             "BackEnd Developer",
             
