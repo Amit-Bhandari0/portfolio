@@ -642,7 +642,7 @@
   .hero-content {
     order: 2;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2.3rem;
   }
 
   .hero-avatar {
@@ -703,7 +703,7 @@
   }
 
   .hero-content {
-    margin-top: 1.5rem;
+    margin-top: 2.3rem;
   }
 
   .greeting {
@@ -801,8 +801,12 @@
 
 @media (max-width: 400px) {
   .robot-container {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 260px;
+  }
+
+  .hero-content {
+    margin-top: 2rem;
   }
 
   .hero-btns .btn {
