@@ -1,356 +1,368 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Cache DOM elements
-    const navbar = document.querySelector('.navbar');
-    const menuBtn = document.querySelector('.menu-btn');
-    const navMenu = document.querySelector('.nav-links');
-    const robotContainer = document.getElementById('robot-container');
+document.addEventListener("DOMContentLoaded", function () {
+  // Cache DOM elements
+  const navbar = document.querySelector(".navbar");
+  const menuBtn = document.querySelector(".menu-btn");
+  const navMenu = document.querySelector(".nav-links");
+  const robotContainer = document.getElementById("robot-container");
 
-    // Initialize all functionality
-    initTypingAnimation();
-    initNavbarScroll();
-    if (robotContainer) initRobotInteraction();
-    initNavigationSystem();
-    initMobileContactActions();
-    initAutoHideSuccessMessage();
-    initFormSubmission();
+  // Initialize all functionality
+  initTypingAnimation();
+  initNavbarScroll();
+  if (robotContainer) initRobotInteraction();
+  initNavigationSystem();
+  initMobileContactActions();
+  initAutoHideSuccessMessage();
+  initFormSubmission();
 
-    // Mobile menu toggle
-    if (menuBtn && navMenu) {
-        menuBtn.addEventListener('click', function () {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
+  // Mobile menu toggle
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", function () {
+      this.classList.toggle("active");
+      navMenu.classList.toggle("active");
+      document.body.classList.toggle("menu-open");
+      document.body.style.overflow = navMenu.classList.contains("active")
+        ? "hidden"
+        : "";
+    });
+  }
+
+  // Typing animation
+  function initTypingAnimation() {
+    const typingText = document.getElementById("typing-text");
+    if (!typingText) return;
+
+    const roles = ["AI/ML Developer", "Python Developer", "BackEnd Developer"];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let isAnimationPaused = false;
+    let animationFrame;
+
+    function typeRoles() {
+      if (isAnimationPaused) return;
+
+      const currentRole = roles[roleIndex];
+
+      if (isDeleting) {
+        typingText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        typingText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 150;
+      }
+
+      if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typingSpeed = 1500;
+        isAnimationPaused = true;
+        setTimeout(() => {
+          isAnimationPaused = false;
+          typeRoles();
+        }, typingSpeed);
+        return;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typingSpeed = 500;
+        isAnimationPaused = true;
+        setTimeout(() => {
+          isAnimationPaused = false;
+          typeRoles();
+        }, typingSpeed);
+        return;
+      }
+
+      clearTimeout(animationFrame);
+      animationFrame = setTimeout(typeRoles, typingSpeed);
     }
 
-    // Typing animation
-    function initTypingAnimation() {
-        const typingText = document.getElementById("typing-text");
-        if (!typingText) return;
+    setTimeout(typeRoles, 1000);
+  }
 
-        const roles = [
-            "AI/ML Developer",
-            "Python Developer",
-            "BackEnd Developer",
-            
-        ];
+  // Navbar scroll effect
+  function initNavbarScroll() {
+    if (!navbar) return;
 
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        let isAnimationPaused = false;
-        let animationFrame;
+    window.addEventListener("scroll", function () {
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  }
 
-        function typeRoles() {
-            if (isAnimationPaused) return;
+  // Robot interaction
+  function initRobotInteraction() {
+    const pupils = document.querySelectorAll(".pupil");
+    const robotParts = {
+      armLeft: document.querySelector(".arm-left"),
+      armRight: document.querySelector(".arm-right"),
+      legLeft: document.querySelector(".leg-left"),
+      legRight: document.querySelector(".leg-right"),
+    };
 
-            const currentRole = roles[roleIndex];
+    // Pupil follow mouse
+    robotContainer.addEventListener("mousemove", (e) => {
+      const rect = robotContainer.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
 
-            if (isDeleting) {
-                typingText.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                typingText.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 150;
-            }
+      const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+      const pupilX = Math.cos(angle) * 4;
+      const pupilY = Math.sin(angle) * 4;
 
-            if (!isDeleting && charIndex === currentRole.length) {
-                isDeleting = true;
-                typingSpeed = 1500;
-                isAnimationPaused = true;
-                setTimeout(() => {
-                    isAnimationPaused = false;
-                    typeRoles();
-                }, typingSpeed);
-                return;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typingSpeed = 500;
-                isAnimationPaused = true;
-                setTimeout(() => {
-                    isAnimationPaused = false;
-                    typeRoles();
-                }, typingSpeed);
-                return;
-            }
+      pupils.forEach((pupil) => {
+        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+      });
+    });
 
-            clearTimeout(animationFrame);
-            animationFrame = setTimeout(typeRoles, typingSpeed);
+    // Pause animations on hover
+    robotContainer.addEventListener("mouseenter", () => {
+      Object.values(robotParts).forEach((part) => {
+        if (part) {
+          part.style.animationPlayState = "paused";
+          if (part.classList.contains("arm-left"))
+            part.style.transform = "rotate(15deg)";
+          if (part.classList.contains("arm-right"))
+            part.style.transform = "rotate(-15deg)";
+          if (part.classList.contains("leg-left"))
+            part.style.transform = "rotate(5deg)";
+          if (part.classList.contains("leg-right"))
+            part.style.transform = "rotate(-5deg)";
         }
+      });
+    });
 
-        setTimeout(typeRoles, 1000);
+    robotContainer.addEventListener("mouseleave", () => {
+      Object.values(robotParts).forEach((part) => {
+        if (part) {
+          part.style.animationPlayState = "running";
+          part.style.transform = "";
+        }
+      });
+      pupils.forEach((pupil) => (pupil.style.transform = "translate(0, 0)"));
+    });
+  }
+
+  // Navigation system
+  function initNavigationSystem() {
+    const sectionUrls = {
+      home: "/",
+      about: "/about/",
+      projects: "/projects/",
+      contact: "/contact/",
+    };
+
+    function isDocPage() {
+      return window.location.pathname.includes("/docs/");
     }
 
-    // Navbar scroll effect
-    function initNavbarScroll() {
-        if (!navbar) return;
+    function scrollToSection(sectionId, behavior = "smooth") {
+      if (isDocPage()) {
+        window.location.href = sectionUrls[sectionId] || "/";
+        return;
+      }
 
-        window.addEventListener('scroll', function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const offset = section.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: offset,
+        behavior: behavior,
+      });
+
+      window.history.replaceState({}, "", sectionUrls[sectionId] || "/");
     }
 
-    // Robot interaction
-    function initRobotInteraction() {
-        const pupils = document.querySelectorAll('.pupil');
-        const robotParts = {
-            armLeft: document.querySelector('.arm-left'),
-            armRight: document.querySelector('.arm-right'),
-            legLeft: document.querySelector('.leg-left'),
-            legRight: document.querySelector('.leg-right')
-        };
+    // Handle all internal link clicks
+    document.querySelectorAll("a[href]").forEach((link) => {
+      link.addEventListener("click", function (e) {
+        if (this.href.startsWith("mailto:") || this.href.startsWith("tel:")) {
+          return;
+        }
+        if (
+          this.target ||
+          (this.href.startsWith("http") &&
+            !this.href.startsWith(window.location.origin))
+        ) {
+          return;
+        }
 
-        // Pupil follow mouse
-        robotContainer.addEventListener('mousemove', (e) => {
-            const rect = robotContainer.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
+        if (this.href.includes("/docs/")) return;
 
-            const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
-            const pupilX = Math.cos(angle) * 4;
-            const pupilY = Math.sin(angle) * 4;
+        e.preventDefault();
+        const url = new URL(this.href);
+        const path = url.pathname;
+        const currentPath = window.location.pathname;
 
-            pupils.forEach(pupil => {
-                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-            });
+        if (!isDocPage() && path === "/" && currentPath === "/") {
+          window.location.reload();
+          return;
+        }
+
+        let sectionId = "home";
+        for (const [id, urlPath] of Object.entries(sectionUrls)) {
+          if (path === urlPath) {
+            sectionId = id;
+            break;
+          }
+        }
+
+        if (isDocPage()) {
+          window.location.href = path;
+        } else {
+          scrollToSection(sectionId);
+        }
+
+        if (navMenu && navMenu.classList.contains("active")) {
+          menuBtn.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.style.overflow = "";
+          document.body.classList.remove("menu-open");
+        }
+      });
+    });
+
+    // Handle scroll events to update URL
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+
+    window.addEventListener("scroll", function () {
+      if (isDocPage()) return;
+
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          updateActiveSection(lastKnownScrollPosition);
+          ticking = false;
         });
+        ticking = true;
+      }
+    });
 
-        // Pause animations on hover
-        robotContainer.addEventListener('mouseenter', () => {
-            Object.values(robotParts).forEach(part => {
-                if (part) {
-                    part.style.animationPlayState = 'paused';
-                    if (part.classList.contains('arm-left')) part.style.transform = 'rotate(15deg)';
-                    if (part.classList.contains('arm-right')) part.style.transform = 'rotate(-15deg)';
-                    if (part.classList.contains('leg-left')) part.style.transform = 'rotate(5deg)';
-                    if (part.classList.contains('leg-right')) part.style.transform = 'rotate(-5deg)';
-                }
-            });
-        });
+    function updateActiveSection(scrollPos) {
+      const sections = ["home", "about", "projects", "contact"];
+      let activeSection = "home";
 
-        robotContainer.addEventListener('mouseleave', () => {
-            Object.values(robotParts).forEach(part => {
-                if (part) {
-                    part.style.animationPlayState = 'running';
-                    part.style.transform = '';
-                }
-            });
-            pupils.forEach(pupil => pupil.style.transform = 'translate(0, 0)');
-        });
+      sections.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const sectionTop = section.offsetTop - navbarHeight;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+          activeSection = sectionId;
+        }
+      });
+
+      const currentPath = window.location.pathname;
+      const targetPath = sectionUrls[activeSection] || "/";
+
+      if (currentPath !== targetPath) {
+        window.history.replaceState({}, "", targetPath);
+      }
     }
 
-    // Navigation system
-    function initNavigationSystem() {
-        const sectionUrls = {
-            'home': '/',
-            'about': '/about/',
-            'projects': '/projects/',
-            'contact': '/contact/'
-        };
-
-        function isDocPage() {
-            return window.location.pathname.includes('/docs/');
+    // Handle initial load
+    if (!isDocPage()) {
+      const currentPath = window.location.pathname;
+      let sectionId = "home";
+      for (const [id, url] of Object.entries(sectionUrls)) {
+        if (currentPath === url) {
+          sectionId = id;
+          break;
         }
+      }
 
-        function scrollToSection(sectionId, behavior = 'smooth') {
-            if (isDocPage()) {
-                window.location.href = sectionUrls[sectionId] || '/';
-                return;
-            }
+      setTimeout(() => scrollToSection(sectionId, "instant"), 10);
+    }
 
-            const section = document.getElementById(sectionId);
-            if (!section) return;
+    // Handle browser back/forward
+    window.addEventListener("popstate", function () {
+      if (isDocPage()) return;
 
-            const navbarHeight = navbar ? navbar.offsetHeight : 0;
-            const offset = section.offsetTop - navbarHeight;
-            window.scrollTo({
-                top: offset,
-                behavior: behavior
-            });
-
-            window.history.replaceState({}, '', sectionUrls[sectionId] || '/');
+      const currentPath = window.location.pathname;
+      let targetSection = "home";
+      for (const [id, url] of Object.entries(sectionUrls)) {
+        if (currentPath === url) {
+          targetSection = id;
+          break;
         }
+      }
+      scrollToSection(targetSection);
+    });
+  }
 
-        // Handle all internal link clicks
-        document.querySelectorAll('a[href]').forEach(link => {
-            link.addEventListener('click', function (e) {
-                if (this.target || (this.href.startsWith('http') && !this.href.startsWith(window.location.origin))) {
-                    return;
-                }
+  // Mobile contact actions
+  function initMobileContactActions() {
+    if (window.innerWidth > 576) return;
 
-                if (this.href.includes('/docs/')) return;
+    const emailContact = document.querySelector(
+      '.contact-item[data-type="email"]'
+    );
+    const phoneContact = document.querySelector(
+      '.contact-item[data-type="phone"]'
+    );
 
-                e.preventDefault();
-                const url = new URL(this.href);
-                const path = url.pathname;
-                const currentPath = window.location.pathname;
+    if (emailContact) {
+      emailContact.addEventListener("click", () => {
+        window.location.href = "mailto:amit00bhandari@gmail.com";
+      });
+    }
 
-                if (!isDocPage() && path === '/' && currentPath === '/') {
-                    window.location.reload();
-                    return;
-                }
+    if (phoneContact) {
+      phoneContact.addEventListener("click", () => {
+        window.location.href = "tel:+9779820956228";
+      });
+    }
+  }
 
-                let sectionId = 'home';
-                for (const [id, urlPath] of Object.entries(sectionUrls)) {
-                    if (path === urlPath) {
-                        sectionId = id;
-                        break;
-                    }
-                }
-
-                if (isDocPage()) {
-                    window.location.href = path;
-                } else {
-                    scrollToSection(sectionId);
-                }
-
-                if (navMenu && navMenu.classList.contains('active')) {
-                    menuBtn.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                    document.body.classList.remove('menu-open');
-                }
-            });
+  // Auto-hide success message
+  function initAutoHideSuccessMessage() {
+    const successMessage = document.getElementById("success-message");
+    if (successMessage) {
+      if (!window.matchMedia("(max-width: 768px)").matches) {
+        const confettiElements = document.querySelectorAll(".confetti");
+        confettiElements.forEach((confetti) => {
+          confetti.style.animationPlayState = "running";
         });
+      }
 
-        // Handle scroll events to update URL
-        let lastKnownScrollPosition = 0;
-        let ticking = false;
+      setTimeout(() => {
+        successMessage.style.opacity = "0";
+        successMessage.style.transform = "translateY(-15px) scale(0.95)";
+        successMessage.style.pointerEvents = "none";
 
-        window.addEventListener('scroll', function () {
-            if (isDocPage()) return;
-
-            lastKnownScrollPosition = window.scrollY;
-
-            if (!ticking) {
-                window.requestAnimationFrame(function () {
-                    updateActiveSection(lastKnownScrollPosition);
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        function updateActiveSection(scrollPos) {
-            const sections = ['home', 'about', 'projects', 'contact'];
-            let activeSection = 'home';
-
-            sections.forEach(sectionId => {
-                const section = document.getElementById(sectionId);
-                if (!section) return;
-
-                const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const sectionTop = section.offsetTop - navbarHeight;
-                const sectionBottom = sectionTop + section.offsetHeight;
-
-                if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
-                    activeSection = sectionId;
-                }
-            });
-
-            const currentPath = window.location.pathname;
-            const targetPath = sectionUrls[activeSection] || '/';
-
-            if (currentPath !== targetPath) {
-                window.history.replaceState({}, '', targetPath);
-            }
-        }
-
-        // Handle initial load
-        if (!isDocPage()) {
-            const currentPath = window.location.pathname;
-            let sectionId = 'home';
-            for (const [id, url] of Object.entries(sectionUrls)) {
-                if (currentPath === url) {
-                    sectionId = id;
-                    break;
-                }
-            }
-
-            setTimeout(() => scrollToSection(sectionId, 'instant'), 10);
-        }
-
-        // Handle browser back/forward
-        window.addEventListener('popstate', function () {
-            if (isDocPage()) return;
-
-            const currentPath = window.location.pathname;
-            let targetSection = 'home';
-            for (const [id, url] of Object.entries(sectionUrls)) {
-                if (currentPath === url) {
-                    targetSection = id;
-                    break;
-                }
-            }
-            scrollToSection(targetSection);
-        });
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 400);
+      }, 4000);
     }
+  }
 
-    // Mobile contact actions
-    function initMobileContactActions() {
-        if (window.innerWidth > 576) return;
+  // Form submission handling
+  function initFormSubmission() {
+    const contactForm = document.querySelector(".contact-form form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (e) {
+        // Only prevent default if not on doc page
+        const isDocPage = window.location.pathname.includes("/docs/");
 
-        const emailContact = document.querySelector('.contact-item[data-type="email"]');
-        const phoneContact = document.querySelector('.contact-item[data-type="phone"]');
-
-        if (emailContact) {
-            emailContact.addEventListener('click', () => {
-                window.location.href = 'mailto:amit00bhandari@gmail.com';
-            });
+        if (!isDocPage) {
+          // Show loading state
+          const submitBtn = this.querySelector(".submit-btn");
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.querySelector("span").textContent = "Sending...";
+          }
         }
-
-        if (phoneContact) {
-            phoneContact.addEventListener('click', () => {
-                window.location.href = 'tel:+9779820956228';
-            });
-        }
+      });
     }
-
-    // Auto-hide success message
-    function initAutoHideSuccessMessage() {
-        const successMessage = document.getElementById('success-message');
-        if (successMessage) {
-            if (!window.matchMedia("(max-width: 768px)").matches) {
-                const confettiElements = document.querySelectorAll('.confetti');
-                confettiElements.forEach(confetti => {
-                    confetti.style.animationPlayState = 'running';
-                });
-            }
-
-            setTimeout(() => {
-                successMessage.style.opacity = '0';
-                successMessage.style.transform = 'translateY(-15px) scale(0.95)';
-                successMessage.style.pointerEvents = 'none';
-
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 400);
-            }, 4000);
-        }
-    }
-    
-    // Form submission handling
-    function initFormSubmission() {
-        const contactForm = document.querySelector('.contact-form form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                // Only prevent default if not on doc page
-                const isDocPage = window.location.pathname.includes('/docs/');
-                
-                if (!isDocPage) {
-                    // Show loading state
-                    const submitBtn = this.querySelector('.submit-btn');
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.querySelector('span').textContent = 'Sending...';
-                    }
-                }
-            });
-        }
-    }
+  }
 });
