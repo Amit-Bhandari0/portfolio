@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
@@ -11,22 +11,22 @@
     <title>Amit Bhandari – AI/ML & Backend Developer</title>
     <meta
       name="description"
-      content="Portfolio of Amit Bhandari - AI/ML Developer and Backend Engineer with expertise in Python, Django, and machine learning projects."
+      content="Amit Bhandari - AI/ML Developer and Backend Developer specializing in Python, Django, and machine learning. View portfolio, projects, and contact information."
     />
     <meta
       name="keywords"
-      content="AI developer, ML engineer, backend developer, python developer, django, portfolio, Amit Bhandari"
+      content="Amit Bhandari, AI developer, ML developer, backend developer, python developer, django, portfolio, Nepal developer, Bharatpur developer, machine learning projects"
     />
     <meta name="author" content="Amit Bhandari" />
 
     <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
-      content="Amit Bhandari – AI/ML & Backend Developer"
+      content="Amit Bhandari – AI/ML & Backend Developer Portfolio"
     />
     <meta
       property="og:description"
-      content="Explore AI/ML and backend projects built with Python and Django by Amit Bhandari."
+      content="Professional portfolio of Amit Bhandari - AI/ML and backend development expert from Nepal"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://amit-bhandari.com.np" />
@@ -34,6 +34,8 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://amit-bhandari.com.np" />
+
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
     <!-- Favicons -->
     <link
@@ -80,6 +82,34 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Amit Bhandari",
+        "url": "https://amit-bhandari.com.np",
+        "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/og_image.png' %}",
+        "sameAs": [
+          "https://github.com/Amit-Bhandari0",
+          "https://www.linkedin.com/in/amit-bhandari-15a6b2339",
+          "https://www.instagram.com/amit_bhandari19/"
+        ],
+        "jobTitle": "AI/ML & Backend Developer",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Independent Freelancer"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bharatpur",
+          "addressRegion": "Chitwan",
+          "addressCountry": "Nepal"
+        },
+        "email": "amit00bhandari@gmail.com",
+        "telephone": "+977-9820956228"
+      }
+    </script>
 
     <!-- Smooth scrolling and section offset -->
     <style>
@@ -232,7 +262,7 @@
 
     <!-- Main Script -->
     <script src="{% static 'js/script.js' %}"></script>
-    {% block script %}
+    {% block script %} 
     {% endblock %}
   </body>
 </html>
