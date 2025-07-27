@@ -45,6 +45,12 @@
       href="{% static 'images/favicon.png' %}"
     />
     <link
+      rel="shortcut icon"
+      href="{% static 'images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+
+    <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="{% static 'images/apple_icon.png' %}"
@@ -262,7 +268,6 @@
 
     <!-- Main Script -->
     <script src="{% static 'js/script.js' %}"></script>
-    {% block script %} 
-    {% endblock %}
+    {% block script %} {% endblock %}
   </body>
 </html>
