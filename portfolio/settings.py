@@ -53,6 +53,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio.wsgi.application'
 
+
+# Write the CA cert to a temp file
+cert_path = '/tmp/ca.pem'
+with open(cert_path, 'w') as f:
+    f.write(os.environ['DB_CA_CERT'].replace('\\n', '\n'))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -63,7 +69,7 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', '3306'),
         'OPTIONS': {
             'ssl': {
-                'ca': '/etc/ssl/certs/ca-certificates.crt',
+                'ca': cert_path,
             }
         }
     }
