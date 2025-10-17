@@ -5,7 +5,45 @@
   </div>
   <div class="projects-container">
     <div class="projects-grid" id="projectsGrid">
-      <!-- Project 1: Snake Game -->
+      
+      <!-- Project 1: Chat Bot -->
+      <article class="project-card">
+        <div class="project-media">
+          <img
+            src="{% static 'images/chatbot.webp' %}"
+            alt="Snake Game screenshot"
+            loading="lazy"
+          />
+        </div>
+        <div class="project-info">
+          <h3>Chat Bot</h3>
+          <p>
+            A smart and friendly chatbot that can chat, answer questions, and
+            make conversations feel natural and engaging.
+          </p>
+
+          <div class="project-links">
+            <a
+              href="https://github.com/Amit-Bhandari0/chat_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat Bot source code"
+            >
+              <i class="fab fa-github" aria-hidden="true"></i> Code
+            </a>
+            <a
+              href="https://chat-bot-h736.onrender.com"
+              target="_blank"
+              class="docs-link"
+              aria-label="View Chat Bot"
+            >
+              <i class="fas fa-book" aria-hidden="true"></i> View
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2: Snake Game -->
       <article class="project-card">
         <div class="project-media">
           <img
@@ -33,7 +71,7 @@
             <a
               href="{% url 'snake_docs' %}"
               class="docs-link"
-              aria-label="2D Racing Game documentation"
+              aria-label="Snake Game documentation"
             >
               <i class="fas fa-book" aria-hidden="true"></i> Docs
             </a>
@@ -41,7 +79,7 @@
         </div>
       </article>
 
-      <!-- Project 2: Space Invaders -->
+      <!-- Project 3: Space Invaders -->
       <article class="project-card">
         <div class="project-media">
           <img
@@ -76,7 +114,7 @@
         </div>
       </article>
 
-      <!-- Project 3: Flappy Bird -->
+      <!-- Project 4: Flappy Bird -->
       <article class="project-card">
         <div class="project-media">
           <img
