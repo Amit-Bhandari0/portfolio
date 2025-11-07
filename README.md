@@ -148,8 +148,7 @@ Contributions are welcome\! If you have suggestions for enhancements or identify
 Let's connect 👇  
 - 🌐 Website: [amit-bhandari.com.np](https://amit-bhandari.com.np)  
 - 📬 Email: [amit00bhandari@gmail.com](mailto:amit00bhandari@gmail.com)  
-- 📞 Phone/WhatsApp: [+977 9820956228](https://wa.me/9779820956228)  
-- 💼 LinkedIn: [Amit Bhandari](https://www.linkedin.com/in/amit-bhandari-15a6b2339)  
+- 📞 Phone/WhatsApp: [+977 9705409979](https://wa.me/9779705409979)    
 - 💻 GitHub: [@Amit-Bhandari0](https://github.com/Amit-Bhandari0)  
 
 
